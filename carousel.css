@@ -1,0 +1,79 @@
+/* image Infinite Carousel */
+:root {
+  /* edit these */
+  --number-of-images: 4;
+
+  --carousel-image-width: 300px;
+  --carousel-image-height: 75px;
+
+  --carousel-images-padding: 20px;
+  --carousel-images-gap: 4em;
+
+  --carousel-bg-rgb: 255, 255, 255;
+
+  --carousel-animation-speed: 20s;
+  /* leave these */
+  --carousel-loop-start: 0px;
+  --carousel-loop-end: calc(-1 * (var(--number-of-images) * (var(--carousel-image-width) + var(--carousel-images-gap)) + var(--carousel-images-padding)));
+  --carousel-images-width: calc(var(--number-of-images) * (var(--carousel-image-width) + var(--carousel-images-gap)) + var(--carousel-images-padding));
+}
+ 
+@keyframes carousel-loop{
+  0%{
+    left: var(--carousel-loop-start);
+  }
+  100%{
+    left: var(--carousel-loop-end);
+  }
+}
+.carousel-images-container {
+  left: 0;
+  right: 0;
+  margin: auto;
+  overflow: hidden;
+}
+.carousel-images-container {
+  left: 0px;
+  white-space: nowrap;
+  gap: var(--carousel-images-gap);
+  position: relative;
+}
+.carousel-images-container::before {
+  content: '';
+  background-image: linear-gradient(to right, rgba(var(--carousel-bg-rgb), 1), rgba(var(--carousel-bg-rgb), 0));
+  width: 10%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  margin: auto;
+}
+.carousel-images-container::after {
+  content: '';
+  background-image: linear-gradient(to right, rgba(var(--carousel-bg-rgb), 0), rgba(var(--carousel-bg-rgb), 1));
+  width: 10%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  margin: auto;
+}
+.carousel-images {
+  position: relative;
+  left: 0;
+  display: inline-block;
+  white-space: nowrap;
+  height: var(--carousel-image-height);
+  padding-left: var(--carousel-images-padding);
+  padding-right: var(--carousel-images-padding);
+  width: var(--carousel-images-width);
+  animation: carousel-loop var(--carousel-animation-speed) infinite linear;
+}
+.carousel-images img,
+.carousel-images svg {
+  width: var(--carousel-image-width);
+  object-fit: contain;
+  display: inline;
+  height: var(--carousel-image-height);
+  margin-right: var(--carousel-images-gap);
+}
