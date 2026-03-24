@@ -1,7 +1,7 @@
 # Usage
 1. Copy and paste CSS and HTML template code into your project
 2. Update the carousel images with your images
-3. Update the CSS rules for number of images, and other variables beneath "/* edit these */" as desired.
+3. Update the CSS rules for number of images, and other variables beneath `/* edit these */` as desired.
 
 ## Note:
 All images must be within `<div class="carousel-images">` element. 
